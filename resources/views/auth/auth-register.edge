@@ -1,6 +1,9 @@
 @include('master.heading')
 <section class="section">
     <div class="container mt-5">
+      @if(flashMessage('notification'))
+  <span>{{ flashMessage('notification') }}</span>
+@endif
       <div class="row">
         <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
           <div class="login-brand">
@@ -56,6 +59,13 @@
                     <select name="jenis_kelamin" required class="form-control selectric">
                       <option value="LAKI-LAKI">LAKI-LAKI</option>
                       <option value="PEREMPUAN">PEREMPUAN</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Jenis Kelamin</label>
+                    <select name="type" required class="form-control selectric">
+                      <option value="TEACHER">Saya Guru</option>
+                      <option value="STUDENT">Murid</option>
                     </select>
                   </div>
         

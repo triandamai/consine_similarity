@@ -9,8 +9,8 @@ class Akun extends Model {
       nama: "required",
       jenis_kelamin: "required",
       setuju: "required",
-      username: "required|unique:akuns",
-      email: "required|email|unique:akuns",
+      username: "required",
+      email: "required|email",
       password: "required",
       password_confirm: "required"
     };

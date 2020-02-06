@@ -30,3 +30,5 @@ Route.group(() => {
 
 Route.get("auth-signin", "AuthController.login_view").prefix("v1");
 Route.get("auth-signup", "AuthController.register_view").prefix("v1");
+Route.post("auth-signinproc", "AuthController.login_event").prefix("v1");
+Route.post("auth-signupproc", "AuthController.register_event").prefix("v1");

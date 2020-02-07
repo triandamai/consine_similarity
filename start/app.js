@@ -19,7 +19,8 @@ const providers = [
   "@adonisjs/shield/providers/ShieldProvider",
   "@adonisjs/session/providers/SessionProvider",
   "@adonisjs/auth/providers/AuthProvider",
-  "adonis-validator/providers/ValidatorProvider"
+  "adonis-validator/providers/ValidatorProvider",
+  "@adonisjs/auth/providers/AuthProvider"
 ];
 
 /*

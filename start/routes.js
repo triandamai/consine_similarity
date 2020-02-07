@@ -16,19 +16,30 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use("Route");
 
-Route.on("/").render("TaskController.index");
+Route.on("/").render("welcome");
 
 Route.group(() => {
   Route.get("/", "AdminViewController.index");
-}).prefix("admin");
+})
+  .prefix("admin")
+  .middleware("auth");
 Route.group(() => {
   Route.get("/", "StudentViewController.index");
-}).prefix("student");
+})
+  .prefix("student")
+  .middleware("auth");
 Route.group(() => {
   Route.get("/", "TeacherViewController.index");
-}).prefix("teacher");
+})
+  .prefix("teacher")
+  .middleware("auth");
 
-Route.get("auth-signin", "AuthController.login_view").prefix("v1");
-Route.get("auth-signup", "AuthController.register_view").prefix("v1");
-Route.post("auth-signinproc", "AuthController.login_event").prefix("v1");
-Route.post("auth-signupproc", "AuthController.register_event").prefix("v1");
+Route.group(() => {
+  Route.get("/", async ({ request, response }) => {
+    return response.redirect("auth-signin");
+  });
+  Route.get("auth-signin", "AuthController.login_view");
+  Route.get("auth-signup", "AuthController.register_view");
+  Route.post("auth-signinproc", "AuthController.login_event");
+  Route.post("auth-signupproc", "AuthController.register_event");
+}).prefix("v1");
